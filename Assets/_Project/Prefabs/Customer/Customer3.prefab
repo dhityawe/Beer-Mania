@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1223146379
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1678939821, guid: 6c0ffa82fbd85594582fff05598fd8d2, type: 3}
+  m_Sprite: {fileID: 1589875965, guid: 45324634b01dd6041a6c4358ca94482b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 912609870925143847}
   - component: {fileID: 4747073377603069733}
   m_Layer: 0
-  m_Name: Customer
+  m_Name: Customer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ Animator:
   m_GameObject: {fileID: 6855974556621854440}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 528d51a071a49014b9cb8f0345654ace, type: 2}
+  m_Controller: {fileID: 9100000, guid: 93c5d8489895eff47bebda6ca7f51ea3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,9 +156,9 @@ MonoBehaviour:
   CustomerSpawnPoint: {fileID: 0}
   rb: {fileID: 912609870925143847}
   animator: {fileID: 1866642638581864661}
-  walkSpeed: 1
-  walkDistance: 2
-  score: 100
+  walkSpeed: 3
+  walkDistance: 3
+  score: 1000
 --- !u!50 &912609870925143847
 Rigidbody2D:
   serializedVersion: 4

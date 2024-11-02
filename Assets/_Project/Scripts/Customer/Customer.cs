@@ -64,7 +64,22 @@ public class Customer : MonoBehaviour
         animator.SetBool("ISWALKING", false);
         isDrinking = true;
 
-        EventManager.Broadcast(new AddScore(score));
+        int totalScore = 0;
+
+        if (beerQuality == BeerQuality.Bad)
+        {
+            totalScore = score / 2;
+        }
+        else if (beerQuality == BeerQuality.Good)
+        {
+            totalScore = score;
+        }
+        else if (beerQuality == BeerQuality.Perfect)
+        {
+            totalScore = score * 2;
+        }
+
+        EventManager.Broadcast(new AddScore(totalScore));
     }
 
     private void GotDrink()
