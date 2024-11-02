@@ -1616,16 +1616,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerSpawnData:
   - CustomerPrefab: {fileID: 6855974556621854440, guid: 5dcf296b22e72bd429b5b93a33298da2, type: 3}
-    SpawnWeight: 6
+    SpawnWeight: 0
     SpawnChance: 0.613
   - CustomerPrefab: {fileID: 6855974556621854440, guid: de7f09fc41f363044895128ed3145ffc, type: 3}
-    SpawnWeight: 2
+    SpawnWeight: 0
     SpawnChance: 0.303
   - CustomerPrefab: {fileID: 6855974556621854440, guid: be6f6f46ee6060e4d996e5e2702b7b88, type: 3}
     SpawnWeight: 1
     SpawnChance: 0.106
-  spawnChance: 0.841
-  spawnRate: 1
+  spawnChance: 1
+  spawnRate: 5
 --- !u!1 &1179300473
 GameObject:
   m_ObjectHideFlags: 0

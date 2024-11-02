@@ -112,7 +112,6 @@ public class CustomerManager : Singleton<CustomerManager>
             randomValue = (float)Math.Round(randomValue, 2);
             if (randomValue < customerSpawnData.SpawnChance)
             {
-                print("Random Value: " + randomValue + " Spawn Chance: " + customerSpawnData.SpawnChance);
                 customerPrefab = customerSpawnData.CustomerPrefab;
                 break;
             }

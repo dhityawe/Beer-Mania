@@ -156,6 +156,7 @@ MonoBehaviour:
   CustomerSpawnPoint: {fileID: 0}
   rb: {fileID: 912609870925143847}
   animator: {fileID: 1866642638581864661}
+  customerCollider: {fileID: 4747073377603069733}
   walkSpeed: 1
   walkDistance: 2
   score: 100

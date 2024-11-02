@@ -6,19 +6,26 @@ using UnityEngine.EventSystems;
 public class Customer : MonoBehaviour
 {
     [HideInInspector] public CustomerSpawnPoint CustomerSpawnPoint;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator animator;
-    [SerializeField] private float walkSpeed = 1f;
+    [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Collider2D customerCollider;
+    [SerializeField] protected float walkSpeed = 1f;
     [SerializeField] private float walkDistance = 1f;
     [SerializeField] private int score = 100;
     private float walkTimer = 0f;
-    private bool isDrinking = false;
+    protected bool isGotDrink = false;
+    private Vector2 lastDirection;
 
     private void Awake()
     {
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
+        }
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
         }
     }
 
@@ -33,9 +40,9 @@ public class Customer : MonoBehaviour
         GotDrink();
     }
 
-    private void WalkToCounter()
+    protected virtual void WalkToCounter()
     {
-        if (isDrinking) return;
+        if (isGotDrink) return;
 
         rb.velocity = Vector2.zero;
 
@@ -50,11 +57,17 @@ public class Customer : MonoBehaviour
         Vector2 direction = CustomerSpawnPoint.CustomerDeadlinePoint.transform.position - transform.position;
         transform.position += (Vector3)direction.normalized / (10f / walkDistance);
 
-        if (Vector2.Distance(transform.position, CustomerSpawnPoint.CustomerDeadlinePoint.transform.position) < 0.1f)
+        if (lastDirection != null && Vector2.Dot(direction, lastDirection) < 0f)
         {
-            EventManager.Broadcast(new OnCustomerArrivedAtCounter(this));
             Destroy(gameObject);
         }
+
+        if (Vector2.Distance(transform.position, CustomerSpawnPoint.CustomerDeadlinePoint.transform.position) < 0.1f)
+        {
+            Destroy(gameObject);
+        }
+
+        lastDirection = direction;
     }
 
     public void GiveDrink(BeerQuality beerQuality)
@@ -62,7 +75,8 @@ public class Customer : MonoBehaviour
         Vector2 direction = CustomerSpawnPoint.transform.position- CustomerSpawnPoint.CustomerDeadlinePoint.transform.position;
         rb.velocity = direction.normalized * 5f;
         animator.SetBool("ISWALKING", false);
-        isDrinking = true;
+        isGotDrink = true;
+        customerCollider.enabled = false;
 
         int totalScore = 0;
 
@@ -82,9 +96,9 @@ public class Customer : MonoBehaviour
         EventManager.Broadcast(new AddScore(totalScore));
     }
 
-    private void GotDrink()
+    protected virtual void GotDrink()
     {
-        if (!isDrinking) return;
+        if (!isGotDrink) return;
 
         if (Vector2.Distance(transform.position, CustomerSpawnPoint.transform.position) < 0.1f)
         {
