@@ -15,6 +15,7 @@ public class Customer : MonoBehaviour
     private float walkTimer = 0f;
     protected bool isGotDrink = false;
     private Vector2 lastDirection;
+    private bool isGameOver;
 
     private void Awake()
     {
@@ -29,6 +30,21 @@ public class Customer : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        EventManager.AddListener<OnGameOver>(OnGameOver);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<OnGameOver>(OnGameOver);
+    }
+
+    private void OnGameOver(OnGameOver evt)
+    {
+        isGameOver = true;
+    }
+
     private void Start()
     {
         animator.SetBool("ISWALKING", true);
@@ -36,6 +52,7 @@ public class Customer : MonoBehaviour
     
     private void Update()
     {
+        if (isGameOver) return;
         WalkToCounter();
         GotDrink();
     }
@@ -60,11 +77,13 @@ public class Customer : MonoBehaviour
         if (lastDirection != null && Vector2.Dot(direction, lastDirection) < 0f)
         {
             Destroy(gameObject);
+            EventManager.Broadcast(new OnLiveLost(1));
         }
 
         if (Vector2.Distance(transform.position, CustomerSpawnPoint.CustomerDeadlinePoint.transform.position) < 0.1f)
         {
             Destroy(gameObject);
+            EventManager.Broadcast(new OnLiveLost(1));
         }
 
         lastDirection = direction;
