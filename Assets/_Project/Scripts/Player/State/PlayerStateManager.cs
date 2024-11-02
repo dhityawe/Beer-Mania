@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class PlayerStateManager : MonoBehaviour
     public float moveSpeed = 5f;
     public float switchTableDistance = 1.5f;
 
+    [Header("Glass Pool")]
+    public GlassPool glassPool;
+
     [Header("Pouring Settings")]
     public float fillRate = 0.3f;
+    public GameObject glassPrefab;
 
     [Header("References")]
     public Transform[] tables;
@@ -19,20 +24,19 @@ public class PlayerStateManager : MonoBehaviour
 
     private void Start()
     {
-        SetState(new PlayerMoveState());
+        SetState(new PlayerMoveState(this));
     }
 
-    // Ensure Update calls currentState.UpdateState(this)
     private void Update()
     {
-        currentState?.UpdateState(this);
+        currentState?.UpdateState();
     }
 
     public void SetState(IPlayerState newState)
     {
-        currentState?.ExitState(this);
+        currentState?.ExitState();
         currentState = newState;
-        currentState.EnterState(this);
+        currentState.EnterState();
     }
 
     #region Input-Driven Actions
@@ -49,7 +53,6 @@ public class PlayerStateManager : MonoBehaviour
 
     public void SwitchTable(int direction)
     {
-        // Update the current table index with wrap-around logic
         currentTableIndex += direction;
 
         if (currentTableIndex < 0)
@@ -61,12 +64,9 @@ public class PlayerStateManager : MonoBehaviour
             currentTableIndex = 0; // Wrap to the first table
         }
 
-        // Update the player's position to the new table's position while keeping x and z coordinates
-        Vector3 newPosition = new Vector3(transform.position.x, tables[currentTableIndex].position.y, transform.position.z);
-        transform.position = newPosition;
+        // Update the player's position to the new table's position
+        transform.position = tables[currentTableIndex].position;
     }
-
-
 
     #endregion
 
@@ -79,24 +79,33 @@ public class PlayerStateManager : MonoBehaviour
 
     public bool PourBeer()
     {
+        // teleport the player to the table
+        transform.position = tables[currentTableIndex].position;
+
         fillLevel += Time.deltaTime * fillRate;
         fillLevel = Mathf.Clamp(fillLevel, 0, 1);
         UpdateFillUI(fillLevel);
 
         return fillLevel >= 1;
     }
-
     public void ThrowGlass()
     {
-        string quality = DetermineQuality(fillLevel);
-        Debug.Log($"Glass thrown with fill level {fillLevel} ({quality}) quality.");
+        GameObject glass = glassPool.GetGlass();
+        if (glass != null)
+        {
+            glass.transform.position = new Vector2(transform.position.x, tables[currentTableIndex].position.y);
+
+            BeerQuality quality = DetermineQuality(fillLevel); // Use the enum
+            glass.GetComponent<Glass>().SetQuality(quality); // Set quality in glass object
+            Debug.Log($"Glass thrown with fill level {fillLevel} ({quality}) quality.");
+        }
     }
 
-    private string DetermineQuality(float fill)
+    private BeerQuality DetermineQuality(float fill) // Update to return BeerQuality
     {
-        if (fill >= 0.65f && fill <= 0.75f) return "Perfect";
-        if ((fill >= 0.55f && fill < 0.65f) || (fill > 0.75f && fill <= 0.85f)) return "Good";
-        return "Bad";
+        if (fill >= 0.65f && fill <= 0.75f) return BeerQuality.Perfect;
+        if ((fill >= 0.55f && fill < 0.65f) || (fill > 0.75f && fill <= 0.85f)) return BeerQuality.Good;
+        return BeerQuality.Bad;
     }
 
     private void UpdateFillUI(float fillLevel)

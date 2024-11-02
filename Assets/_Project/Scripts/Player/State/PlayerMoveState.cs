@@ -2,13 +2,24 @@ using UnityEngine;
 
 public class PlayerMoveState : IPlayerState
 {
-    public void EnterState(PlayerStateManager player)
+    private PlayerStateManager player;
+
+    public PlayerMoveState(PlayerStateManager player)
+    {
+        this.player = player;
+    }
+
+    public void EnterState()
     {
         Debug.Log("PlayerMoveState: EnterState");
     }
 
-    public void UpdateState(PlayerStateManager player)
+    public void UpdateState()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            player.SetState(new PourState(player));
+        }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             player.MoveLeft();
@@ -27,7 +38,7 @@ public class PlayerMoveState : IPlayerState
         }
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void ExitState()
     {
         Debug.Log("PlayerMoveState: ExitState");
     }
