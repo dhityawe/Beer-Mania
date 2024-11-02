@@ -30,13 +30,13 @@ public class Glass : MonoBehaviour
         this.quality = quality;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision) // !!! Uncomment this when adding Customer script
-    // {
-    //     Customer customer = collision.GetComponent<Customer>();
-    //     if (customer != null)
-    //     {
-    //         customer.CheckQuality(quality);
-    //         ReturnToPool(); // Return the glass after checking quality
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D collision) // !!! Uncomment this when adding Customer script
+    {
+        Customer customer = collision.GetComponent<Customer>();
+        if (customer != null)
+        {
+            customer.GiveDrink(quality);
+            ReturnToPool(); // Return the glass after checking quality
+        }
+    }
 }

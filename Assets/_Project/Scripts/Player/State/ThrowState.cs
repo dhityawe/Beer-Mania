@@ -11,6 +11,10 @@ public class ThrowState : IPlayerState
 
     public void EnterState()
     {
+        //* Should be playing crossi-out glass animation here
+        //* Should be playing a start pouring animation here
+
+        player.fillImage.fillAmount = 0f;
         Debug.Log("Entered ThrowState");
         player.ThrowGlass();
         player.SetState(new PlayerMoveState(player));

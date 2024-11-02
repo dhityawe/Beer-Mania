@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerStateManager : MonoBehaviour
     public GlassPool glassPool;
 
     [Header("Pouring Settings")]
+    public Image fillImage;
     public float fillRate = 0.3f;
     public GameObject glassPrefab;
 
@@ -20,7 +22,7 @@ public class PlayerStateManager : MonoBehaviour
     public Transform[] tables;
     private int currentTableIndex = 0;
 
-    private float fillLevel = 0;
+    public float fillLevel = 0;
 
     private void Start()
     {

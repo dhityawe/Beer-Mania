@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Customer : MonoBehaviour, IPointerDownHandler
+public class Customer : MonoBehaviour
 {
     [HideInInspector] public CustomerSpawnPoint CustomerSpawnPoint;
     [SerializeField] private Rigidbody2D rb;
@@ -57,7 +57,7 @@ public class Customer : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void GiveDrink()
+    public void GiveDrink(BeerQuality beerQuality)
     {
         Vector2 direction = CustomerSpawnPoint.transform.position- CustomerSpawnPoint.CustomerDeadlinePoint.transform.position;
         rb.velocity = direction.normalized * 5f;
@@ -75,10 +75,5 @@ public class Customer : MonoBehaviour, IPointerDownHandler
         {
             Destroy(gameObject);
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        GiveDrink();
     }
 }

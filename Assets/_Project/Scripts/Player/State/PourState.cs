@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PourState : IPlayerState
 {
@@ -19,6 +20,11 @@ public class PourState : IPlayerState
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            //* Should be playing cross-in glass animation here
+            //* Should be playing a start pouring animation here
+
+            player.fillImage.fillAmount = player.fillLevel;
+
             if (player.PourBeer())
             {
                 player.SetState(new ThrowState(player));
