@@ -5,6 +5,8 @@ using UnityEngine;
 public class CustomerSpawnPoint : MonoBehaviour
 {
     [SerializeField] private CustomerDeadlinePoint customerDeadlinePoint;
+    [SerializeField] private int lane = 1;
+    public int Lane { get => lane; }
     public CustomerDeadlinePoint CustomerDeadlinePoint { get => customerDeadlinePoint; }
 
     private void Start()

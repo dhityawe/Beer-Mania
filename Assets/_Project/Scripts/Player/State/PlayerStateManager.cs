@@ -84,6 +84,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         fillLevel = 0;
         anim.SetTrigger("StartPouring");
+        anim.SetBool("isPouring", true);
     }
 
     public void StopPouring()

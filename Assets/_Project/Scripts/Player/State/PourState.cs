@@ -33,13 +33,13 @@ public class PourState : IPlayerState
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            player.StopPouring();
             player.SetState(new ThrowState(player));
         }
     }
 
     public void ExitState()
     {
+        player.StopPouring();
         Debug.Log("Exited PlayerPourState");
     }
 }

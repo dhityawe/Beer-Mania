@@ -12,6 +12,7 @@ public class Customer : MonoBehaviour
     [SerializeField] protected float walkSpeed = 1f;
     [SerializeField] private float walkDistance = 1f;
     [SerializeField] private int score = 100;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private float walkTimer = 0f;
     protected bool isGotDrink = false;
     private Vector2 lastDirection;
@@ -27,6 +28,16 @@ public class Customer : MonoBehaviour
         if (animator == null)
         {
             animator = GetComponent<Animator>();
+        }
+
+        if (customerCollider == null)
+        {
+            customerCollider = GetComponent<Collider2D>();
+        }
+        
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
 
@@ -55,6 +66,13 @@ public class Customer : MonoBehaviour
         if (isGameOver) return;
         WalkToCounter();
         GotDrink();
+    }
+
+    public void SetLane(int lane)
+    {
+        if (spriteRenderer == null) return;
+
+        spriteRenderer.sortingLayerName = "Lane " + lane;
     }
 
     protected virtual void WalkToCounter()

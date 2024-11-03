@@ -119,6 +119,7 @@ public class CustomerManager : Singleton<CustomerManager>
         
         Customer customer = SpawnCustomer(customerSpawnPoint, customerPrefab);
         customer.CustomerSpawnPoint = customerSpawnPoint;
+        customer.SetLane(customerSpawnPoint.Lane);
     }
 
     private Customer SpawnCustomer(CustomerSpawnPoint customerSpawnPoint, GameObject customerPrefab)
