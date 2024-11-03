@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,10 +139,10 @@ TextureImporter:
       name: Glass_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 21
-        width: 13
-        height: 13
+        x: 0
+        y: 0
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: Glass_1
       rect:
         serializedVersion: 2
-        x: 5
+        x: 26
         y: 0
-        width: 14
-        height: 16
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Glass_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 52
         y: 0
-        width: 22
-        height: 19
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: Glass_3
       rect:
         serializedVersion: 2
-        x: 75
+        x: 78
         y: 0
-        width: 23
-        height: 18
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,10 +223,10 @@ TextureImporter:
       name: Glass_4
       rect:
         serializedVersion: 2
-        x: 110
+        x: 104
         y: 0
-        width: 25
-        height: 18
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,27 +236,6 @@ TextureImporter:
       bones: []
       spriteID: cd9e40b70116cc145a4e06c5ece3c006
       internalID: 66326747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Glass_5
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a2e6355a820cb94891e0f7d42580051
-      internalID: 658032824
       vertices: []
       indices: 
       edges: []
@@ -277,7 +256,6 @@ TextureImporter:
       Glass_2: 1513916064
       Glass_3: 391652300
       Glass_4: 66326747
-      Glass_5: 658032824
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

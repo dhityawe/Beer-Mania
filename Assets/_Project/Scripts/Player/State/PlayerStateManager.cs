@@ -49,6 +49,23 @@ public class PlayerStateManager : MonoBehaviour
 
     #region Input-Driven Actions
 
+    public void StartMovingLeft()
+    {
+        anim.SetTrigger("StartMoveLeft");
+        anim.SetBool("isMoving", true);
+    }
+
+    public void StartMovingRight()
+    {
+        anim.SetTrigger("StartMoveRight");
+        anim.SetBool("isMoving", true);
+    }
+
+    public void StopMoving()
+    {
+        anim.SetBool("isMoving", false);
+    }
+
     public void MoveLeft()
     {
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;

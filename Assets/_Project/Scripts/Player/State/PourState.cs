@@ -14,17 +14,18 @@ public class PourState : IPlayerState
     {
         player.StartPouring();
         Debug.Log("Entered PlayerPourState");
-        
     }
 
     public void UpdateState()
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            // Trigger environmental animation event
+            EnviEventManager.Instance.RaiseEvent("StartPouringAnimation");
+
             //* Should be playing cross-in glass animation here
             //* Should be playing a start pouring animation here
             player.fillImage.fillAmount = player.fillLevel;
-
 
             if (player.PourBeer())
             {
