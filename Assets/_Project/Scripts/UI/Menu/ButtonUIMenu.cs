@@ -22,8 +22,19 @@ public class ButtonUIMenu : MonoBehaviour
         cursor.SetActive(false);
     }
 
-    public virtual void Click()
+    public virtual bool Click()
     {
-        Debug.Log("Button Clicked");
+        return false;
+    }
+
+    protected virtual IEnumerator ClickCoroutine()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            image.sprite = normalSprite;
+            yield return new WaitForSeconds(0.2f);
+            image.sprite = selectedSprite;
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

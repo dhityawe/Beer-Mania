@@ -34,7 +34,7 @@ public class CustomerManager : Singleton<CustomerManager>
     {
         EventManager.AddListener<RegisterCustomerSpawnPoint>(OnRegisterCustomerSpawnPoint);
         EventManager.AddListener<OnRushHourReady>(OnRushHourReady);
-        EventManager.AddListener<OnRushHour>(get => {StartCoroutine(OnRushHour());});
+        EventManager.AddListener<OnRushHour>(OnRushHour);
         EventManager.AddListener<OnCustomerLeft>(OnCustomerLeft);
     }
 
@@ -42,7 +42,7 @@ public class CustomerManager : Singleton<CustomerManager>
     {
         EventManager.RemoveListener<RegisterCustomerSpawnPoint>(OnRegisterCustomerSpawnPoint);
         EventManager.RemoveListener<OnRushHourReady>(OnRushHourReady);
-        EventManager.RemoveListener<OnRushHour>(get => {StartCoroutine(OnRushHour());});
+        EventManager.RemoveListener<OnRushHour>(OnRushHour);
         EventManager.RemoveListener<OnCustomerLeft>(OnCustomerLeft);
     }
 
@@ -52,6 +52,11 @@ public class CustomerManager : Singleton<CustomerManager>
         if (isRushHourReady) return;
 
         TrySpawnCustomer();
+    }
+
+    private void OnRushHour(OnRushHour evt)
+    {
+        StartCoroutine(OnRushHour());
     }
 
     private void OnRegisterCustomerSpawnPoint(RegisterCustomerSpawnPoint evt)

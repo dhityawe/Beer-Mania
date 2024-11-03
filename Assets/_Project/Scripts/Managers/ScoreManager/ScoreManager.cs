@@ -6,17 +6,12 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     private int score = 0;
-    public int Score {get => score; private set { score = value; EventManager.Broadcast(new OnScoreChanged(score)); }}
+    public static int Score {get => Instance.score; private set { Instance.score = value; EventManager.Broadcast(new OnScoreChanged(Instance.score)); }}
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        EventManager.Broadcast(new OnScoreChanged(score));
     }
 
     private void OnEnable()

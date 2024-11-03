@@ -56,6 +56,7 @@ public class CustomerAdvanced : Customer
         isStillDrinking = false;
         isGotDrink = false;
         GlassEmpty glass = Instantiate(emptyGlass, transform.position, Quaternion.identity).GetComponent<GlassEmpty>();
+        glass.transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
         glass.SetTableIndex(lane-1);
     }
 }

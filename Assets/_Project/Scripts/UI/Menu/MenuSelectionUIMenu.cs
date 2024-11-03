@@ -7,6 +7,7 @@ public class MenuSelectionUIMenu : MonoBehaviour
     [SerializeField] private List<ButtonUIMenu> buttons;
 
     private int currentButtonIndex = 0;
+    private bool isButtonSelected = false;
 
     private void Start()
     {
@@ -15,6 +16,11 @@ public class MenuSelectionUIMenu : MonoBehaviour
 
     private void Update()
     {
+        if (isButtonSelected)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             buttons[currentButtonIndex].Deselect();
@@ -36,9 +42,9 @@ public class MenuSelectionUIMenu : MonoBehaviour
             buttons[currentButtonIndex].Select();
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            buttons[currentButtonIndex].Click();
+           isButtonSelected = buttons[currentButtonIndex].Click();
         }
     }
 }
