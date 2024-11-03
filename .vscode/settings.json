@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "gemjemples24.sln"
+    "dotnet.defaultSolution": "gemjemplus24.sln"
 }

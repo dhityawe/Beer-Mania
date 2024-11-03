@@ -21,6 +21,7 @@ public class PlayerStateManager : MonoBehaviour
     [Header("References")]
     public Transform[] tables;
     private int currentTableIndex = 0;
+    public int CurrentTableIndex { get { return currentTableIndex; } }
 
     public Animator anim;
     public float fillLevel = 0;
