@@ -1,59 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/*
-use this Audio Manager script in every scene if you want play the audio
-this script is reusable
-
-*/
-
-
-public class AudioManager : MonoBehaviour
+[Serializable]
+public class AudioData
 {
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] public AudioSource sfxSource;
-    [Space]
-    [Header("music")]
-    public List<AudioClip> musicClips = new();
-    [Space]
-    [Header("sfx")]
-    public List<AudioClip> sfxClips = new();
+    public string name;
+    public AudioSource audioSource;
+}
 
-    public static AudioManager instance; //* UPDATE !!! - static instance
+public class AudioManager : Singleton<AudioManager>
+{
+    [SerializeField] private AudioData[] audioData;
     
-
-    public void SetMusic(AudioClip clip) {
-        musicSource.clip = clip;
-        musicSource.Play();
-    }
-
-    void Awake() {
-        if(instance == null) {
-            instance = this;
-        }
-        else {
-            Destroy(gameObject);
-        }
-    }
-
-    void Start() {
-        SetMusic(musicSource.clip);
-    }
-
-    public void SetSFX(AudioClip clip) {
-        sfxSource.clip = clip;
-        sfxSource.PlayOneShot(clip);
-    }
-
-    public static void StopMusic() {
-        instance.musicSource.Stop();
-    }
-
-    public static void StopSfx()
+    private void Start()
     {
-        instance.sfxSource.Stop();
+        PlaySound("bgm");
     }
 
+    public static void PlaySound(string name)
+    {
+        foreach (var data in Instance.audioData)
+        {
+            if (data.name == name)
+            {
+                data.audioSource.Play();
+                return;
+            }
+        }
+
+        Debug.LogError($"Sound with name {name} not found");
+    }
+
+    public static void StopSound(string name)
+    {
+        foreach (var data in Instance.audioData)
+        {
+            if (data.name == name)
+            {
+                data.audioSource.Stop();
+                return;
+            }
+        }
+    }
 }

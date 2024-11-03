@@ -32,7 +32,9 @@ public class TimeManager : Singleton<TimeManager>
 
     private void StartRushHour(OnCustomerSterilized evt)
     {
-        print("Start Rush Hour");
+        AudioManager.PlaySound("rush_hour");
+        AudioManager.StopSound("bgm");
+        AudioManager.PlaySound("rush_hour_bgm");
         isRushHour = true;
         EventManager.Broadcast(new OnRushHour(true));
         rushHourTimer = 0;
@@ -63,6 +65,8 @@ public class TimeManager : Singleton<TimeManager>
                 isRushHour = false;
                 EventManager.Broadcast(new OnRushHour(false));
                 rushHourTimer = 0;
+                AudioManager.StopSound("rush_hour_bgm");
+                AudioManager.PlaySound("bgm");
             }
         }
 

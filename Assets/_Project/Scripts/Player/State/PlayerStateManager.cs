@@ -132,6 +132,7 @@ public class PlayerStateManager : MonoBehaviour
     public void ThrowGlass()
     {
         GameObject glass = glassPool.GetGlass();
+        AudioManager.PlaySound("swing");
         if (glass != null)
         {
             

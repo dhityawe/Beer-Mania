@@ -76,8 +76,8 @@ public class CustomerManager : Singleton<CustomerManager>
 
     private IEnumerator OnRushHour()
     {
-        yield return new WaitForSecondsRealtime(2f);
         isRushHourReady = false;
+        yield return null;
     }
 
     private void OnCustomerLeft(OnCustomerLeft evt)

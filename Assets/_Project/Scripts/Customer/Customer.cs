@@ -96,6 +96,8 @@ public class Customer : MonoBehaviour
 
     public void GiveDrink(BeerQuality beerQuality)
     {
+        AudioManager.PlaySound("pop");
+        
         Vector2 direction = CustomerSpawnPoint.transform.position- CustomerSpawnPoint.CustomerDeadlinePoint.transform.position;
         rb.velocity = direction.normalized * 5f;
         animator.SetBool("ISWALKING", false);
