@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PourState : IPlayerState
 {
     private PlayerStateManager player;
-
+    
     public PourState(PlayerStateManager player)
     {
         this.player = player;
@@ -12,9 +12,9 @@ public class PourState : IPlayerState
 
     public void EnterState()
     {
-        
-        Debug.Log("Entered PlayerPourState");
         player.StartPouring();
+        Debug.Log("Entered PlayerPourState");
+        
     }
 
     public void UpdateState()
@@ -23,8 +23,8 @@ public class PourState : IPlayerState
         {
             //* Should be playing cross-in glass animation here
             //* Should be playing a start pouring animation here
-
             player.fillImage.fillAmount = player.fillLevel;
+
 
             if (player.PourBeer())
             {
@@ -33,6 +33,7 @@ public class PourState : IPlayerState
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
+            player.StopPouring();
             player.SetState(new ThrowState(player));
         }
     }

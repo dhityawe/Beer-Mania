@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PlayerStateManager : MonoBehaviour
 
     public Animator anim;
     public float fillLevel = 0;
+
+    public event Action<bool> MovingChanged; // Notify when moving
+    public event Action Pouring; // Notify when pouring
+    public event Action Throwing; // Notify when throwing
 
     private void Start()
     {
@@ -78,11 +83,16 @@ public class PlayerStateManager : MonoBehaviour
     public void StartPouring()
     {
         fillLevel = 0;
+        anim.SetTrigger("StartPouring");
+    }
+
+    public void StopPouring()
+    {
+        anim.SetBool("isPouring", false);
     }
 
     public bool PourBeer()
     {
-        anim.Play("PouringAnimation"); // Play the pouring animation
         // teleport the player to the table
         transform.position = tables[currentTableIndex].position;
 
