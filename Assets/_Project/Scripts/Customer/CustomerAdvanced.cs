@@ -13,7 +13,10 @@ public class CustomerAdvanced : Customer
         if (!isGotDrink) return;
         if (isStillDrinking) return;
 
-        if (Vector2.Distance(transform.position, CustomerSpawnPoint.transform.position) < 0.1f)
+        Vector2 spawnPointDirection = (CustomerSpawnPoint.transform.position - CustomerSpawnPoint.CustomerDeadlinePoint.transform.position).normalized;
+        bool isFacingRight = spawnPointDirection.x < 0;
+
+        if (isFacingRight && transform.position.x < CustomerSpawnPoint.transform.position.x)
         {
             if (currentDrinkTimes <= drinkTimes)
             {
@@ -24,7 +27,22 @@ public class CustomerAdvanced : Customer
             }
             else
             {
-                Destroy(gameObject);
+                OnCustomerLeft();
+            }
+        }
+
+        else if (!isFacingRight && transform.position.x > CustomerSpawnPoint.transform.position.x)
+        {
+            if (currentDrinkTimes <= drinkTimes)
+            {
+                rb.velocity = Vector2.zero;
+                isStillDrinking = true;
+                currentDrinkTimes++;
+                StartCoroutine(DrinkAnimation());
+            }
+            else
+            {
+                OnCustomerLeft();
             }
         }
     }

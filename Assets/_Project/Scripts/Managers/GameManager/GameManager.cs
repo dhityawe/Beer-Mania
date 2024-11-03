@@ -6,6 +6,8 @@ public class GameManager : Singleton<GameManager>
 {
     private int lives = 3;
     public int Lives { get { return lives; } private set { lives = value; EventManager.Broadcast(new OnLiveChanged(lives)); } }
+    private bool isGameStopped = false;
+    public static bool IsGameStopped { get { return Instance.isGameStopped; } }
 
     protected override void Awake()
     {
@@ -35,16 +37,28 @@ public class GameManager : Singleton<GameManager>
     private void OnLiveLost(OnLiveLost evt)
     {
         Lives -= evt.Lives;
+        isGameStopped = true;
 
         if (Lives <= 0)
         {
             EventManager.Broadcast(new OnGameOver());
         }
+
+        StartCoroutine(LiveLostRoutine());
+    }
+
+    private IEnumerator LiveLostRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TestRifqi");
+        Time.timeScale = 1f;
+        isGameStopped = false;
     }
 
     private void OnRestartGame(OnRestartGame evt)
     {
         Lives = 3;
         Time.timeScale = 1f;
+        isGameStopped = false;
     }
 }

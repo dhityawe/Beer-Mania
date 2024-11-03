@@ -112,6 +112,7 @@ public class PlayerStateManager : MonoBehaviour
             
             BeerQuality quality = DetermineQuality(fillLevel); // Use the enum
             glass.GetComponent<Glass>().SetQuality(quality); // Set quality in glass object
+            glass.GetComponent<Glass>().SetTableIndex(currentTableIndex); // Set table index in glass object
             Debug.Log($"Glass thrown with fill level {fillLevel} ({quality}) quality.");
         }
     }

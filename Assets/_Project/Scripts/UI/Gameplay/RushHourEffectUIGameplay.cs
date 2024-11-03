@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RushHourUIGameplay : MonoBehaviour
+public class RushHourEffectUIGameplay : MonoBehaviour
 {
- [SerializeField] private Animator animator;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private void Awake()
     {
-        if (animator == null)
+        if (canvasGroup == null)
         {
-            animator = GetComponent<Animator>();
+            canvasGroup = GetComponent<CanvasGroup>();
         }
+
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     private void OnEnable()
@@ -26,9 +30,6 @@ public class RushHourUIGameplay : MonoBehaviour
 
     private void OnRushHour(OnRushHour evt)
     {
-        if (evt.IsRushHour)
-        {
-            animator.SetTrigger("RUSH");
-        }
+        canvasGroup.alpha = evt.IsRushHour ? 1 : 0;
     }
 }
