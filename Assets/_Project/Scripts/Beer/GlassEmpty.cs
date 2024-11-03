@@ -15,6 +15,8 @@ public class GlassEmpty : MonoBehaviour
         CustomerSpawnPoint currentSpawnPoint = CustomerManager.CustomerSpawnPoints.Find(sp => sp.Lane == tableIndex + 1);
         if (transform.position.x > currentSpawnPoint.CustomerDeadlinePoint.transform.position.x + 0.7f)
         {
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("Destroy");
             EventManager.Broadcast(new OnLiveLost(1));
         }
     }

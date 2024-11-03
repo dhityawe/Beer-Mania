@@ -69,6 +69,7 @@ public class GameManager : Singleton<GameManager>
         Lives = 3;
         Time.timeScale = 1f;
         isGameStopped = false;
+        ScoreManager.SaveHighScore();
         ScoreManager.ResetScore();
     }
 }

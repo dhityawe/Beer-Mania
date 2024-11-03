@@ -13,11 +13,6 @@ public class AudioData
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField] private AudioData[] audioData;
-    
-    private void Start()
-    {
-        PlaySound("bgm");
-    }
 
     public static void PlaySound(string name)
     {

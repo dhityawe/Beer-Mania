@@ -30,6 +30,11 @@ public class CustomerManager : Singleton<CustomerManager>
         CalculateSpawnWeights();
     }
 
+    private void Start()
+    {
+        AudioManager.PlaySound("bgm");
+    }
+
     private void OnEnable()
     {
         EventManager.AddListener<RegisterCustomerSpawnPoint>(OnRegisterCustomerSpawnPoint);

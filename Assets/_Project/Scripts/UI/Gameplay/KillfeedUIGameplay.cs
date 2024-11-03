@@ -35,6 +35,8 @@ public class KillfeedUIGameplay : MonoBehaviour
     public void TriggerKillfeed(TriggerKillFeed evt)
     {
         timer = 0;
+
+        AudioManager.PlaySound("killfeed");
         
         GameObject killfeedPrefab = killfeedPrefabs[(int)evt.KillfeedType];
         GameObject killfeed = Instantiate(killfeedPrefab, transform.position, Quaternion.identity);

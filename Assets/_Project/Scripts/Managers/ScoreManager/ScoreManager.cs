@@ -44,6 +44,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public static void SaveHighScore()
     {
         PlayerPrefs.SetInt("HighScore", HighScore);
+        PlayerPrefs.Save();
     }
 
     public static void ResetScore()
