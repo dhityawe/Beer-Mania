@@ -163,6 +163,8 @@ GameObject:
   m_Component:
   - component: {fileID: 161058511}
   - component: {fileID: 161058512}
+  - component: {fileID: 161058513}
+  - component: {fileID: 161058514}
   m_Layer: 0
   m_Name: Keg 2
   m_TagString: Untagged
@@ -179,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 161058510}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.91489995, y: -0.0247, z: 0}
+  m_LocalPosition: {x: 0.83773947, y: -0.0247, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -237,6 +239,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &161058513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161058510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47952398369b17c489d8b42ffaa03cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneIndex: 1
+--- !u!95 &161058514
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161058510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32065cd0742b4ea4a8a90acfea68c51b, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &193046685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &808482993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1557,7 +1593,7 @@ Transform:
   m_GameObject: {fileID: 808482992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: -5.2, z: 0}
+  m_LocalPosition: {x: 7.5, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1753,6 +1789,8 @@ GameObject:
   m_Component:
   - component: {fileID: 929854511}
   - component: {fileID: 929854512}
+  - component: {fileID: 929854513}
+  - component: {fileID: 929854514}
   m_Layer: 0
   m_Name: Keg 4
   m_TagString: Untagged
@@ -1769,7 +1807,7 @@ Transform:
   m_GameObject: {fileID: 929854510}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1643, y: -0.5247, z: 0}
+  m_LocalPosition: {x: 1.0871395, y: -0.5247, z: 0}
   m_LocalScale: {x: 0.99000007, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1827,6 +1865,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &929854513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929854510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47952398369b17c489d8b42ffaa03cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneIndex: 3
+--- !u!95 &929854514
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929854510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32065cd0742b4ea4a8a90acfea68c51b, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &959107279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2219,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1267820466}
   - component: {fileID: 1267820467}
+  - component: {fileID: 1267820468}
+  - component: {fileID: 1267820469}
   m_Layer: 0
   m_Name: Keg 1
   m_TagString: Untagged
@@ -2163,7 +2237,7 @@ Transform:
   m_GameObject: {fileID: 1267820465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8048, y: 0.1949, z: 0}
+  m_LocalPosition: {x: 0.7276395, y: 0.1949, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2221,6 +2295,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1267820468
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267820465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32065cd0742b4ea4a8a90acfea68c51b, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1267820469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267820465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47952398369b17c489d8b42ffaa03cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneIndex: 0
 --- !u!1 &1295177840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1402427107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2418,7 +2526,7 @@ Transform:
   m_GameObject: {fileID: 1402427106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.25, y: 1.85, z: 0}
+  m_LocalPosition: {x: 5.25, y: 1.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2859,7 +2967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1702486035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2921,7 +3029,7 @@ Transform:
   m_GameObject: {fileID: 1702486034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.5, z: 0}
+  m_LocalPosition: {x: 6, y: -0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2937,6 +3045,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1715242157}
   - component: {fileID: 1715242158}
+  - component: {fileID: 1715242159}
+  - component: {fileID: 1715242160}
   m_Layer: 0
   m_Name: Keg 3
   m_TagString: Untagged
@@ -2953,7 +3063,7 @@ Transform:
   m_GameObject: {fileID: 1715242156}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.045, y: -0.2847, z: 0}
+  m_LocalPosition: {x: 0.9678395, y: -0.2847, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3011,6 +3121,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1715242159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715242156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47952398369b17c489d8b42ffaa03cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneIndex: 2
+--- !u!95 &1715242160
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715242156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32065cd0742b4ea4a8a90acfea68c51b, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1744204467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,8 +3213,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 96721923
-  m_SortingLayer: -2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 429776608, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3218,9 +3362,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 453081303}
   - {fileID: 2106942859}
   - {fileID: 455692432}
+  - {fileID: 453081303}
   - {fileID: 897667426}
   - {fileID: 1983875082}
   - {fileID: 1108515317}
@@ -3285,7 +3429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1824754419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3347,7 +3491,7 @@ Transform:
   m_GameObject: {fileID: 1824754418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.75, y: -2.8, z: 0}
+  m_LocalPosition: {x: 6.75, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3760,6 +3904,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106942858}
   m_CullTransparentMesh: 1
+--- !u!1001 &2828155105125610331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6953673
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082467797075246870, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812584089110239975, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
+      propertyPath: m_Name
+      value: BeerEmpty
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3784,3 +3985,4 @@ SceneRoots:
   - {fileID: 1423826823}
   - {fileID: 1068385562}
   - {fileID: 662395896}
+  - {fileID: 2828155105125610331}

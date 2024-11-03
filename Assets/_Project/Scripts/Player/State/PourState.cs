@@ -13,18 +13,20 @@ public class PourState : IPlayerState
     public void EnterState()
     {
         player.StartPouring();
+        EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, true));
         Debug.Log("Entered PlayerPourState");
-        
     }
 
     public void UpdateState()
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            // Trigger environmental animation event
+            //EnviEventManager.Instance.RaiseEvent("StartPouringAnimation");
+
             //* Should be playing cross-in glass animation here
             //* Should be playing a start pouring animation here
             player.fillImage.fillAmount = player.fillLevel;
-
 
             if (player.PourBeer())
             {
@@ -33,6 +35,7 @@ public class PourState : IPlayerState
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
+            EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, false));
             player.SetState(new ThrowState(player));
         }
     }

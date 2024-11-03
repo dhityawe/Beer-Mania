@@ -23,10 +23,12 @@ public class PlayerMoveState : IPlayerState
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            player.StartMovingLeft();
             player.MoveLeft();
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            player.StartMovingRight();
             player.MoveRight();
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -36,6 +38,10 @@ public class PlayerMoveState : IPlayerState
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             player.SwitchTable(1);
+        }
+        else
+        {
+            player.StopMoving();
         }
     }
 
