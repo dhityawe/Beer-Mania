@@ -8,4 +8,16 @@ public class OnBarrelPouring : GameEvent
         this.laneIndex = laneIndex;
         this.isPouring = isPouring;
     }
+
+
+}
+
+public class OnKeranPouring : GameEvent
+{
+    public bool isPouring;
+
+    public OnKeranPouring(bool isPouring)
+    {
+        this.isPouring = isPouring;
+    }
 }

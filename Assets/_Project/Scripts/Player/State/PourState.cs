@@ -14,6 +14,7 @@ public class PourState : IPlayerState
     {
         player.StartPouring();
         EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, true));
+        EventManager.Broadcast(new OnKeranPouring(true));
         Debug.Log("Entered PlayerPourState");
     }
 
@@ -30,11 +31,13 @@ public class PourState : IPlayerState
 
             if (player.PourBeer())
             {
+                EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, false));
                 player.SetState(new ThrowState(player));
             }
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
+            EventManager.Broadcast(new OnKeranPouring(false));
             EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, false));
             player.SetState(new ThrowState(player));
         }
