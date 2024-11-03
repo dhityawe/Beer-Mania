@@ -3321,7 +3321,7 @@ MonoBehaviour:
     SpawnWeight: 6
     SpawnChance: 0.613
   - CustomerPrefab: {fileID: 4670583946612875631, guid: 3ce6915a87f2f724ba9126d996eab1e0, type: 3}
-    SpawnWeight: 4
+    SpawnWeight: 12
     SpawnChance: 0.613
   - CustomerPrefab: {fileID: 4670583946612875631, guid: f9c76e75ffb116e44a2ed25c0d62a002, type: 3}
     SpawnWeight: 2

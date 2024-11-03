@@ -105,6 +105,7 @@ MonoBehaviour:
   score: 500
   spriteRenderer: {fileID: 4715340400139138024}
   drinkTimes: 0
+  emptyGlass: {fileID: 8812584089110239975, guid: 3ff02c1912a906445a1460d031b7b8c5, type: 3}
 --- !u!212 &4715340400139138024 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6810619998962713711, guid: 5dcf296b22e72bd429b5b93a33298da2, type: 3}

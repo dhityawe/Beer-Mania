@@ -38,7 +38,7 @@ public class Glass : MonoBehaviour
         tableIndex = index;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // !!! Uncomment this when adding Customer script
+    protected virtual void OnTriggerEnter2D(Collider2D collision) // !!! Uncomment this when adding Customer script
     {
         Customer customer = collision.GetComponent<Customer>();
         if (customer != null)

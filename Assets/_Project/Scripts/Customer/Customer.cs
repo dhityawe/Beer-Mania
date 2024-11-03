@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour
     private float walkTimer = 0f;
     protected bool isGotDrink = false;
     private Vector2 lastDirection;
+    protected int lane;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class Customer : MonoBehaviour
 
     public void SetLane(int lane)
     {
+        this.lane = lane;
         if (spriteRenderer == null) return;
 
         spriteRenderer.sortingLayerName = "Lane " + lane;

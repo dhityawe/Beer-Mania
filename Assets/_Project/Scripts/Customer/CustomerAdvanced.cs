@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomerAdvanced : Customer
 {
     [SerializeField] private int drinkTimes = 2;
+    [SerializeField] private GameObject emptyGlass;
     private bool isStillDrinking = false;
     private int currentDrinkTimes = 0;
 
@@ -54,5 +55,7 @@ public class CustomerAdvanced : Customer
         customerCollider.enabled = true;
         isStillDrinking = false;
         isGotDrink = false;
+        GlassEmpty glass = Instantiate(emptyGlass, transform.position, Quaternion.identity).GetComponent<GlassEmpty>();
+        glass.SetTableIndex(lane-1);
     }
 }
