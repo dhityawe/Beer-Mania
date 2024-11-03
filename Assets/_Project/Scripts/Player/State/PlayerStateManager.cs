@@ -34,6 +34,7 @@ public class PlayerStateManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        transform.position = tables[currentTableIndex].position;
         SetState(new PlayerMoveState(this));
     }
 
@@ -66,16 +67,19 @@ public class PlayerStateManager : MonoBehaviour
     public void StopMoving()
     {
         anim.SetBool("isMoving", false);
+        anim.SetFloat("xVelocity", 0);
     }
 
     public void MoveLeft()
     {
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        anim.SetFloat("xVelocity", -1);
     }
 
     public void MoveRight()
     {
         transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        anim.SetFloat("xVelocity", 1);
     }
 
     public void SwitchTable(int direction)
@@ -135,6 +139,7 @@ public class PlayerStateManager : MonoBehaviour
             
             BeerQuality quality = DetermineQuality(fillLevel); // Use the enum
             glass.GetComponent<Glass>().SetQuality(quality); // Set quality in glass object
+            glass.GetComponent<Glass>().SetTableIndex(currentTableIndex); // Set table index in glass object
             Debug.Log($"Glass thrown with fill level {fillLevel} ({quality}) quality.");
         }
     }

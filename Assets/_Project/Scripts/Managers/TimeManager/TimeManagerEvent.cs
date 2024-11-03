@@ -7,3 +7,6 @@ public class OnRushHour : GameEvent
         IsRushHour = isRushHour;
     }
 }
+
+public class OnRushHourReady : GameEvent
+{}

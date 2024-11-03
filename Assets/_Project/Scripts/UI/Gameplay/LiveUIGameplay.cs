@@ -5,6 +5,15 @@ using UnityEngine;
 public class LiveUIGameplay : MonoBehaviour
 {
     [SerializeField] private GameObject liveIconPrefab;
+    [SerializeField] private CanvasGroup canvasGroup;
+
+    private void Awake()
+    {
+        if (canvasGroup == null)
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+    }
 
     private void Start()
     {
@@ -23,7 +32,13 @@ public class LiveUIGameplay : MonoBehaviour
 
     private void OnLiveChanged(OnLiveChanged evt)
     {
+        int currentLives = transform.childCount;
         Initialize();
+
+        if (currentLives > evt.Lives)
+        {
+            StartCoroutine(LiveLostRoutine());
+        }
     }
 
     private void Initialize()
@@ -37,6 +52,17 @@ public class LiveUIGameplay : MonoBehaviour
         {
             RectTransform liveIcon = Instantiate(liveIconPrefab, transform).GetComponent<RectTransform>();
             liveIcon.SetParent(transform);
+        }
+    }
+
+    private IEnumerator LiveLostRoutine()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            canvasGroup.alpha = 0f;
+            yield return new WaitForSeconds(0.25f);
+            canvasGroup.alpha = 1f;
+            yield return new WaitForSeconds(0.25f);
         }
     }
 }

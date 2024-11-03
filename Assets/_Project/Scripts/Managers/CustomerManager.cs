@@ -14,12 +14,15 @@ public class CustomerSpawnData
 public class CustomerManager : Singleton<CustomerManager>
 {
     private List<CustomerSpawnPoint> customerSpawnPoints = new List<CustomerSpawnPoint>();
+    public static List<CustomerSpawnPoint> CustomerSpawnPoints { get => Instance.customerSpawnPoints; }
     [SerializeField] private List<CustomerSpawnData> customerSpawnData = new List<CustomerSpawnData>();
+    private List<Customer> activeCustomers = new List<Customer>();
     private CustomerSpawnPoint lastCustomerSpawnPoint;
     private int customerSpawnPointStreak = 0;
     [SerializeField] [Range(0, 1)] private float spawnChance = 0.5f;
     [SerializeField] private float spawnRate = 1f;
     private float spawnTimer = 0f;
+    private bool isRushHourReady = false;
 
     protected override void Awake()
     {
@@ -30,21 +33,61 @@ public class CustomerManager : Singleton<CustomerManager>
     private void OnEnable()
     {
         EventManager.AddListener<RegisterCustomerSpawnPoint>(OnRegisterCustomerSpawnPoint);
+        EventManager.AddListener<OnRushHourReady>(OnRushHourReady);
+        EventManager.AddListener<OnRushHour>(OnRushHour);
+        EventManager.AddListener<OnCustomerLeft>(OnCustomerLeft);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveListener<RegisterCustomerSpawnPoint>(OnRegisterCustomerSpawnPoint);
+        EventManager.RemoveListener<OnRushHourReady>(OnRushHourReady);
+        EventManager.RemoveListener<OnRushHour>(OnRushHour);
+        EventManager.RemoveListener<OnCustomerLeft>(OnCustomerLeft);
     }
 
     private void Update()
     {
+        if (GameManager.IsGameStopped) return;
+        if (isRushHourReady) return;
+
         TrySpawnCustomer();
+    }
+
+    private void OnRushHour(OnRushHour evt)
+    {
+        StartCoroutine(OnRushHour());
     }
 
     private void OnRegisterCustomerSpawnPoint(RegisterCustomerSpawnPoint evt)
     {
         customerSpawnPoints.Add(evt.CustomerSpawnPoint);
+    }
+
+    private void OnRushHourReady(OnRushHourReady evt)
+    {
+        isRushHourReady = true;
+
+        if (activeCustomers.Count == 0)
+        {
+            EventManager.Broadcast(new OnCustomerSterilized());
+        }
+    }
+
+    private IEnumerator OnRushHour()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        isRushHourReady = false;
+    }
+
+    private void OnCustomerLeft(OnCustomerLeft evt)
+    {
+        activeCustomers.Remove(evt.Customer);
+
+        if (isRushHourReady && activeCustomers.Count == 0)
+        {
+            EventManager.Broadcast(new OnCustomerSterilized());
+        }
     }
 
     private void CalculateSpawnWeights()
@@ -120,6 +163,7 @@ public class CustomerManager : Singleton<CustomerManager>
         Customer customer = SpawnCustomer(customerSpawnPoint, customerPrefab);
         customer.CustomerSpawnPoint = customerSpawnPoint;
         customer.SetLane(customerSpawnPoint.Lane);
+        activeCustomers.Add(customer);
     }
 
     private Customer SpawnCustomer(CustomerSpawnPoint customerSpawnPoint, GameObject customerPrefab)

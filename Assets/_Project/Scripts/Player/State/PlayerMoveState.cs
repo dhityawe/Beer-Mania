@@ -17,25 +17,30 @@ public class PlayerMoveState : IPlayerState
 
     public void UpdateState()
     {
+        if (GameManager.IsGameStopped)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.SetState(new PourState(player));
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             player.StartMovingLeft();
             player.MoveLeft();
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             player.StartMovingRight();
             player.MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             player.SwitchTable(-1);
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             player.SwitchTable(1);
         }

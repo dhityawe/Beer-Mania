@@ -16,7 +16,7 @@ public class Customer : MonoBehaviour
     private float walkTimer = 0f;
     protected bool isGotDrink = false;
     private Vector2 lastDirection;
-    private bool isGameOver;
+    protected int lane;
 
     private void Awake()
     {
@@ -41,21 +41,6 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        EventManager.AddListener<OnGameOver>(OnGameOver);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.RemoveListener<OnGameOver>(OnGameOver);
-    }
-
-    private void OnGameOver(OnGameOver evt)
-    {
-        isGameOver = true;
-    }
-
     private void Start()
     {
         animator.SetBool("ISWALKING", true);
@@ -63,13 +48,15 @@ public class Customer : MonoBehaviour
     
     private void Update()
     {
-        if (isGameOver) return;
+        if (GameManager.IsGameStopped) return;
+
         WalkToCounter();
         GotDrink();
     }
 
     public void SetLane(int lane)
     {
+        this.lane = lane;
         if (spriteRenderer == null) return;
 
         spriteRenderer.sortingLayerName = "Lane " + lane;
@@ -120,14 +107,17 @@ public class Customer : MonoBehaviour
         if (beerQuality == BeerQuality.Bad)
         {
             totalScore = score / 2;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Bad));
         }
         else if (beerQuality == BeerQuality.Good)
         {
             totalScore = score;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Good));
         }
         else if (beerQuality == BeerQuality.Perfect)
         {
             totalScore = score * 2;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Perfect));
         }
 
         EventManager.Broadcast(new AddScore(totalScore));
@@ -137,9 +127,23 @@ public class Customer : MonoBehaviour
     {
         if (!isGotDrink) return;
 
-        if (Vector2.Distance(transform.position, CustomerSpawnPoint.transform.position) < 0.1f)
+        Vector2 spawnPointDirection = (CustomerSpawnPoint.transform.position - CustomerSpawnPoint.CustomerDeadlinePoint.transform.position).normalized;
+        bool isFacingRight = spawnPointDirection.x < 0;
+
+        if (isFacingRight && transform.position.x < CustomerSpawnPoint.transform.position.x)
         {
-            Destroy(gameObject);
+            OnCustomerLeft();
         }
+
+        else if (!isFacingRight && transform.position.x > CustomerSpawnPoint.transform.position.x)
+        {
+            OnCustomerLeft();
+        }
+    }
+
+    protected void OnCustomerLeft()
+    {
+        EventManager.Broadcast(new OnCustomerLeft(this));
+        Destroy(gameObject);
     }
 }

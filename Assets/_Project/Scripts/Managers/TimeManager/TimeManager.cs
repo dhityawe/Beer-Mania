@@ -10,35 +10,46 @@ public class TimeManager : Singleton<TimeManager>
     [SerializeField] private float rushHourTime = 60;
     [SerializeField] private float rushHourDuration = 20;
     private float rushHourTimer = 0;
+    private bool isRushHourReady = false;
     private bool isRushHour = false;
-    private bool isGameOver = false;
     
     private void Update()
     {
-        if (isGameOver) return;
+        if (GameManager.IsGameStopped) return;
         
         RunTime();
     }
 
     private void OnEnable()
     {
-        EventManager.AddListener<OnGameOver>(OnGameOver);
+        EventManager.AddListener<OnCustomerSterilized>(StartRushHour);
     }
 
     private void OnDisable()
     {
-        EventManager.RemoveListener<OnGameOver>(OnGameOver);
+        EventManager.RemoveListener<OnCustomerSterilized>(StartRushHour);
     }
 
-    private void OnGameOver(OnGameOver evt)
+    private void StartRushHour(OnCustomerSterilized evt)
     {
-        isGameOver = true;
+        print("Start Rush Hour");
+        isRushHour = true;
+        EventManager.Broadcast(new OnRushHour(true));
+        rushHourTimer = 0;
+        isRushHourReady = false;
     }
 
     private void RunTime()
     {
-        gameTime += Time.deltaTime;
-        rushHourTimer += Time.deltaTime;
+        if (isRushHour)
+        {
+            rushHourTimer += Time.unscaledDeltaTime;
+        }
+
+        else
+        {
+            rushHourTimer += Time.deltaTime;
+        }
 
         CheckRushHour();
     }
@@ -57,11 +68,10 @@ public class TimeManager : Singleton<TimeManager>
 
         else
         {
-            if (rushHourTimer >= rushHourTime)
+            if (rushHourTimer >= rushHourTime && !isRushHourReady)
             {
-                isRushHour = true;
-                EventManager.Broadcast(new OnRushHour(true));
-                rushHourTimer = 0;
+                isRushHourReady = true;
+                EventManager.Broadcast(new OnRushHourReady());
             }
         }
     }
