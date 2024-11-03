@@ -11,6 +11,7 @@ public class PlayerMoveState : IPlayerState
 
     public void EnterState()
     {
+
         Debug.Log("PlayerMoveState: EnterState");
     }
 
