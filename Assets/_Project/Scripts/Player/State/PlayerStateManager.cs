@@ -65,16 +65,19 @@ public class PlayerStateManager : MonoBehaviour
     public void StopMoving()
     {
         anim.SetBool("isMoving", false);
+        anim.SetFloat("xVelocity", 0);
     }
 
     public void MoveLeft()
     {
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        anim.SetFloat("xVelocity", -1);
     }
 
     public void MoveRight()
     {
         transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        anim.SetFloat("xVelocity", 1);
     }
 
     public void SwitchTable(int direction)

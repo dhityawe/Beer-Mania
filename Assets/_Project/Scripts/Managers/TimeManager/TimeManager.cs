@@ -32,6 +32,7 @@ public class TimeManager : Singleton<TimeManager>
 
     private void StartRushHour(OnCustomerSterilized evt)
     {
+        print("Start Rush Hour");
         isRushHour = true;
         EventManager.Broadcast(new OnRushHour(true));
         rushHourTimer = 0;
