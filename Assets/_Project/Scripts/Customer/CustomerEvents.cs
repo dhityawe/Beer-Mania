@@ -30,3 +30,13 @@ public class OnCustomerLeft : GameEvent
         Customer = customer;
     }
 }
+
+public class TriggerKillFeed : GameEvent
+{
+    public KillfeedUIGameplay.KillfeedType KillfeedType { get; }
+
+    public TriggerKillFeed(KillfeedUIGameplay.KillfeedType killfeedType)
+    {
+        KillfeedType = killfeedType;
+    }
+}

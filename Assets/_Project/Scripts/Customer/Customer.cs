@@ -107,14 +107,17 @@ public class Customer : MonoBehaviour
         if (beerQuality == BeerQuality.Bad)
         {
             totalScore = score / 2;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Bad));
         }
         else if (beerQuality == BeerQuality.Good)
         {
             totalScore = score;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Good));
         }
         else if (beerQuality == BeerQuality.Perfect)
         {
             totalScore = score * 2;
+            EventManager.Broadcast(new TriggerKillFeed(KillfeedUIGameplay.KillfeedType.Perfect));
         }
 
         EventManager.Broadcast(new AddScore(totalScore));

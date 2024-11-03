@@ -34,6 +34,7 @@ public class PlayerStateManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        transform.position = tables[currentTableIndex].position;
         SetState(new PlayerMoveState(this));
     }
 

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/TestRifqi.unity
     guid: 43e08251a00764441a8f16d706481015
+  - enabled: 1
+    path: Assets/_Project/Scenes/TitleScreen.unity
+    guid: d8232655af24b374cb0507db21ab9750
   m_configObjects: {}

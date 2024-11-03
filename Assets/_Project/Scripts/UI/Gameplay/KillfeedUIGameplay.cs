@@ -7,19 +7,36 @@ public class KillfeedUIGameplay : MonoBehaviour
     public enum KillfeedType { Perfect, Good, Bad }
 
     public List<GameObject> killfeedPrefabs;
+    private float timer;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        timer += Time.unscaledDeltaTime;
+
+        if (timer >= 5)
         {
-            TriggerKillfeed(KillfeedType.Perfect);
-            ClearKillfeed();
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 
-    public void TriggerKillfeed(KillfeedType type)
+    private void OnEnable()
     {
-        GameObject killfeedPrefab = killfeedPrefabs[(int)type];
+        EventManager.AddListener<TriggerKillFeed>(TriggerKillfeed);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<TriggerKillFeed>(TriggerKillfeed);
+    }
+
+    public void TriggerKillfeed(TriggerKillFeed evt)
+    {
+        timer = 0;
+        
+        GameObject killfeedPrefab = killfeedPrefabs[(int)evt.KillfeedType];
         GameObject killfeed = Instantiate(killfeedPrefab, transform.position, Quaternion.identity);
 
         // Set the parent of the killfeed to this object
@@ -30,6 +47,8 @@ public class KillfeedUIGameplay : MonoBehaviour
 
         // Set the index of the killfeed as the last child
         killfeed.transform.SetSiblingIndex(transform.childCount - 1);
+        
+        ClearKillfeed();
     }
 
     public void ClearKillfeed()
