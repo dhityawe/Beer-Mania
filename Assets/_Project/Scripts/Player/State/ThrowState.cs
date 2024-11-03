@@ -25,5 +25,6 @@ public class ThrowState : IPlayerState
     public void ExitState()
     {
         Debug.Log("Exited ThrowState");
+
     }
 }

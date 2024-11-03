@@ -13,7 +13,9 @@ public class GlassPool : MonoBehaviour
         // Initialize the pool
         for (int i = 0; i < poolSize; i++)
         {
+            // instantiate the glass prefab and set the parent to this object
             GameObject glass = Instantiate(glassPrefab);
+            glass.transform.SetParent(transform);
             glass.SetActive(false); // Deactivate the glass initially
             glassPool.Enqueue(glass);
         }
@@ -31,6 +33,7 @@ public class GlassPool : MonoBehaviour
         {
             // Optionally instantiate more glasses if needed
             GameObject glass = Instantiate(glassPrefab);
+            glass.transform.SetParent(transform);
             return glass; // Return the new instance
         }
     }

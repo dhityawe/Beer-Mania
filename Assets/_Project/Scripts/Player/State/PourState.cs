@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +21,18 @@ public class PourState : IPlayerState
 
     public void UpdateState()
     {
+        if (player.fillLevel >= 0.3f)
+        {
+            player.ParameterImage.SetActive(true);
+        }
+        else 
+        {
+            player.ParameterImage.SetActive(false);
+        }
         if (Input.GetKey(KeyCode.Space))
         {
             // Trigger environmental animation event
-            //EnviEventManager.Instance.RaiseEvent("StartPouringAnimation");
+            EnviEventManager.Instance.RaiseEvent("StartPouringAnimation");
 
             //* Should be playing cross-in glass animation here
             //* Should be playing a start pouring animation here
@@ -35,7 +44,7 @@ public class PourState : IPlayerState
                 player.SetState(new ThrowState(player));
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space) && player.fillLevel >= 0.3f)
         {
             EventManager.Broadcast(new OnKeranPouring(false));
             EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, false));

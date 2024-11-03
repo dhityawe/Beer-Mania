@@ -16,6 +16,7 @@ public class PlayerStateManager : MonoBehaviour
 
     [Header("Pouring Settings")]
     public GameObject GlassImage;
+    public GameObject ParameterImage;
     public Image fillImage;
     public float fillRate = 0.3f;
 
@@ -27,7 +28,6 @@ public class PlayerStateManager : MonoBehaviour
     public Animator anim;
     public float fillLevel = 0;
 
-    public event Action<bool> MovingChanged; // Notify when moving
     public event Action Pouring; // Notify when pouring
     public event Action Throwing; // Notify when throwing
 
@@ -111,6 +111,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         anim.SetBool("isPouring", false);
         GlassImage.SetActive(false);
+        ParameterImage.SetActive(false);
     }
 
     public bool PourBeer()
@@ -129,6 +130,7 @@ public class PlayerStateManager : MonoBehaviour
         GameObject glass = glassPool.GetGlass();
         if (glass != null)
         {
+            
             glass.transform.position = new Vector2(transform.position.x, tables[currentTableIndex].position.y);
             
             BeerQuality quality = DetermineQuality(fillLevel); // Use the enum
