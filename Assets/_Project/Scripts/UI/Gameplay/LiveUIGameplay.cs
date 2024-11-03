@@ -37,7 +37,6 @@ public class LiveUIGameplay : MonoBehaviour
 
         if (currentLives > evt.Lives)
         {
-            print(currentLives + " " + evt.Lives);
             StartCoroutine(LiveLostRoutine());
         }
     }

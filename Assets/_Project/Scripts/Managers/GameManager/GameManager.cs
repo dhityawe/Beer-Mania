@@ -41,10 +41,13 @@ public class GameManager : Singleton<GameManager>
 
         if (Lives <= 0)
         {
-            EventManager.Broadcast(new OnGameOver());
+            StartCoroutine(GameOverRoutine());
         }
 
-        StartCoroutine(LiveLostRoutine());
+        else
+        {
+            StartCoroutine(LiveLostRoutine());
+        }
     }
 
     private IEnumerator LiveLostRoutine()
@@ -53,6 +56,12 @@ public class GameManager : Singleton<GameManager>
         UnityEngine.SceneManagement.SceneManager.LoadScene("TestRifqi");
         Time.timeScale = 1f;
         isGameStopped = false;
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+        EventManager.Broadcast(new OnGameOver());
     }
 
     private void OnRestartGame(OnRestartGame evt)

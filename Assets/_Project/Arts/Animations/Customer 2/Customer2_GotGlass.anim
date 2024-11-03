@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Customer2_Walking
+  m_Name: Customer2_GotGlass
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 419791704, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - time: 0.125
-      value: {fileID: -1875547797, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - time: 0.25
-      value: {fileID: 267443056, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - time: 0.4
-      value: {fileID: 1778532876, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
+      value: {fileID: -906728839, guid: 07e10059c0b690742b2a29517d811e47, type: 3}
     attribute: m_Sprite
-    path: Sprite
+    path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 40
+  m_SampleRate: 30
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -41,7 +35,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 850496168
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -50,16 +44,13 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 419791704, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - {fileID: -1875547797, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - {fileID: 267443056, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
-    - {fileID: 1778532876, guid: c49de0d306602524a89b2e92af4ad278, type: 3}
+    - {fileID: -906728839, guid: 07e10059c0b690742b2a29517d811e47, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.425
+    m_StopTime: 0.033333335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

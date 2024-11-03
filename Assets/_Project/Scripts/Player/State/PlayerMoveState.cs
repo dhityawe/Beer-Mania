@@ -17,6 +17,11 @@ public class PlayerMoveState : IPlayerState
 
     public void UpdateState()
     {
+        if (GameManager.IsGameStopped)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.SetState(new PourState(player));

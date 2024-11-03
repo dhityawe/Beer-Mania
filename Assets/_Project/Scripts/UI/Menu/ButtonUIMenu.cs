@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonUIMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image image;
+    [SerializeField] private Sprite selectedSprite;
+    [SerializeField] private Sprite normalSprite;
+    [SerializeField] private GameObject cursor;
+
+    public void Select()
     {
-        
+        image.sprite = selectedSprite;
+        cursor.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Deselect()
     {
-        
+        image.sprite = normalSprite;
+        cursor.SetActive(false);
+    }
+
+    public virtual void Click()
+    {
+        Debug.Log("Button Clicked");
     }
 }

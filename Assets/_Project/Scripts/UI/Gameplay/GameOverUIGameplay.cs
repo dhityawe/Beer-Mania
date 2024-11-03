@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameOverUIGameplay : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private MenuSelectionUIMenu menuSelection;
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class GameOverUIGameplay : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        
+        menuSelection.enabled = false;
     }
 
     private void OnEnable()
@@ -33,6 +36,8 @@ public class GameOverUIGameplay : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+
+        menuSelection.enabled = true;
     }
 
     public void RestartGame()
