@@ -14,7 +14,7 @@ public class Glass : MonoBehaviour
         if (transform.position.x < -10f)
         {
             // start break glass animation
-            
+            EventManager.Broadcast(new OnLiveLost(1));
             ReturnToPool();
         }
     }
