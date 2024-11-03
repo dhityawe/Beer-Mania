@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     public GlassPool glassPool;
 
     [Header("Pouring Settings")]
+    public GameObject GlassImage;
     public Image fillImage;
     public float fillRate = 0.3f;
 
@@ -103,11 +104,13 @@ public class PlayerStateManager : MonoBehaviour
         fillLevel = 0;
         anim.SetTrigger("StartPouring");
         anim.SetBool("isPouring", true);
+        GlassImage.SetActive(true);
     }
 
     public void StopPouring()
     {
         anim.SetBool("isPouring", false);
+        GlassImage.SetActive(false);
     }
 
     public bool PourBeer()

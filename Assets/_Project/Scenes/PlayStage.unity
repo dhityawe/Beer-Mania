@@ -1859,7 +1859,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1663877586}
   - {fileID: 312638318}
   - {fileID: 1319337971}
   m_Father: {fileID: 1983875082}
@@ -1880,7 +1879,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: daa774e343e23564e8305ea2ecd5000a, type: 2}
-  m_CullingMode: 2
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2350,7 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.94509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2737,7 +2736,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 959107280}
+  m_Father: {fileID: 1983875082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3109,6 +3108,7 @@ MonoBehaviour:
   moveSpeed: 5
   switchTableDistance: 1.5
   glassPool: {fileID: 805957466}
+  GlassImage: {fileID: 959107279}
   fillImage: {fileID: 312638319}
   fillRate: 0.9
   tables:
@@ -3491,6 +3491,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1663877586}
   - {fileID: 959107280}
   m_Father: {fileID: 1814253379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
