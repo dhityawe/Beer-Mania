@@ -38,12 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Bg
+    uniqueID: 1861551161
+    locked: 0
   - name: Customer
     uniqueID: 1223146379
+    locked: 0
+  - name: Props
+    uniqueID: 2399927075
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 2
+  - name: Player
     uniqueID: 96721923
     locked: 0

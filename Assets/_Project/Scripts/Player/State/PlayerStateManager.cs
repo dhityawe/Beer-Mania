@@ -16,16 +16,17 @@ public class PlayerStateManager : MonoBehaviour
     [Header("Pouring Settings")]
     public Image fillImage;
     public float fillRate = 0.3f;
-    public GameObject glassPrefab;
 
     [Header("References")]
     public Transform[] tables;
     private int currentTableIndex = 0;
 
+    public Animator anim;
     public float fillLevel = 0;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         SetState(new PlayerMoveState(this));
     }
 
@@ -81,6 +82,7 @@ public class PlayerStateManager : MonoBehaviour
 
     public bool PourBeer()
     {
+        anim.Play("PouringAnimation"); // Play the pouring animation
         // teleport the player to the table
         transform.position = tables[currentTableIndex].position;
 
@@ -96,7 +98,7 @@ public class PlayerStateManager : MonoBehaviour
         if (glass != null)
         {
             glass.transform.position = new Vector2(transform.position.x, tables[currentTableIndex].position.y);
-
+            
             BeerQuality quality = DetermineQuality(fillLevel); // Use the enum
             glass.GetComponent<Glass>().SetQuality(quality); // Set quality in glass object
             Debug.Log($"Glass thrown with fill level {fillLevel} ({quality}) quality.");
