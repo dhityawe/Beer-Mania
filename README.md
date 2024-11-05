@@ -1,4 +1,4 @@
-# My Beer Serving Game 🍻
+# Beer Mania 🍻
 
 In this game, you play as a bartender, serving beer to a series of customers with different needs and behaviors. Navigate through tables, pour beer with precision, and manage rush hours to keep up with the demand!
 
