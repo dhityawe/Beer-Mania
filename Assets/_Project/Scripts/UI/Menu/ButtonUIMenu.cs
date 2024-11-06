@@ -24,6 +24,7 @@ public class ButtonUIMenu : MonoBehaviour
 
     public virtual bool Click()
     {
+        AudioManager.PlaySound("Click");
         return false;
     }
 
