@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; // To use coroutines
 
 public class ThrowState : IPlayerState
 {
@@ -11,13 +12,12 @@ public class ThrowState : IPlayerState
 
     public void EnterState()
     {
-        //* Should be playing crossi-out glass animation here
-        //* Should be playing a start pouring animation here
+        player.spriteAnimator.PlayIfNotPlaying("Throw");
 
         player.fillImage.fillAmount = 0f;
         Debug.Log("Entered ThrowState");
         player.ThrowGlass();
-        player.SetState(new PlayerMoveState(player));
+        player.StartCoroutine(WaitForThrowAnimationToFinish()); // Start the coroutine to wait for animation
     }
 
     public void UpdateState() { }
@@ -25,6 +25,14 @@ public class ThrowState : IPlayerState
     public void ExitState()
     {
         Debug.Log("Exited ThrowState");
+    }
 
+    private IEnumerator WaitForThrowAnimationToFinish()
+    {
+        // Wait 0.3 seconds for the animation to finish
+        yield return new WaitForSeconds(0.2f);
+
+        // After the animation is finished, move to PlayerMoveState
+        player.SetState(new PlayerMoveState(player));
     }
 }

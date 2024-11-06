@@ -1,6 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
+using GabrielBigardi.SpriteAnimator;
 using System;
 
 public class PlayerStateManager : MonoBehaviour
@@ -25,7 +25,7 @@ public class PlayerStateManager : MonoBehaviour
     private int currentTableIndex = 0;
     public int CurrentTableIndex { get { return currentTableIndex; } }
 
-    public Animator anim;
+    public SpriteAnimator spriteAnimator;
     public float fillLevel = 0;
 
     public event Action Pouring; // Notify when pouring
@@ -33,7 +33,7 @@ public class PlayerStateManager : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        spriteAnimator = GetComponent<SpriteAnimator>();
         transform.position = tables[currentTableIndex].position;
         SetState(new PlayerMoveState(this));
     }
@@ -52,34 +52,16 @@ public class PlayerStateManager : MonoBehaviour
 
     #region Input-Driven Actions
 
-    public void StartMovingLeft()
-    {
-        anim.SetTrigger("StartMoveLeft");
-        anim.SetBool("isMoving", true);
-    }
-
-    public void StartMovingRight()
-    {
-        anim.SetTrigger("StartMoveRight");
-        anim.SetBool("isMoving", true);
-    }
-
-    public void StopMoving()
-    {
-        anim.SetBool("isMoving", false);
-        anim.SetFloat("xVelocity", 0);
-    }
-
     public void MoveLeft()
     {
+        spriteAnimator.PlayIfNotPlaying("RunLeft");
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        anim.SetFloat("xVelocity", -1);
     }
 
     public void MoveRight()
     {
+        spriteAnimator.PlayIfNotPlaying("RunRight");
         transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        anim.SetFloat("xVelocity", 1);
     }
 
     public void SwitchTable(int direction)
@@ -106,20 +88,25 @@ public class PlayerStateManager : MonoBehaviour
     public void StartPouring()
     {
         fillLevel = 0;
-        anim.SetTrigger("StartPouring");
-        anim.SetBool("isPouring", true);
         GlassImage.SetActive(true);
+        
     }
 
     public void StopPouring()
     {
-        anim.SetBool("isPouring", false);
         GlassImage.SetActive(false);
         ParameterImage.SetActive(false);
     }
 
+    public void CancelPouring()
+    {
+        StopPouring();
+        fillLevel = 0;
+    }
+
     public bool PourBeer()
     {
+        spriteAnimator.PlayIfNotPlaying("Pouring");
         // teleport the player to the table
         transform.position = tables[currentTableIndex].position;
 
@@ -155,6 +142,15 @@ public class PlayerStateManager : MonoBehaviour
     private void UpdateFillUI(float fillLevel)
     {
         Debug.Log($"Fill Level: {fillLevel}");
+    }
+
+    #endregion
+
+    #region Animation Events
+
+    private void OnEnable()
+    {
+        spriteAnimator = GetComponent<SpriteAnimator>();
     }
 
     #endregion

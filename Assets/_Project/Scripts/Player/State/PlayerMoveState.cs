@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 
 public class PlayerMoveState : IPlayerState
 {
     private PlayerStateManager player;
+    private float leftBoundary = -6.6f;
+    private float rightBoundary = 7.85f;
 
     public PlayerMoveState(PlayerStateManager player)
     {
@@ -11,7 +14,6 @@ public class PlayerMoveState : IPlayerState
 
     public void EnterState()
     {
-
         Debug.Log("PlayerMoveState: EnterState");
     }
 
@@ -22,31 +24,43 @@ public class PlayerMoveState : IPlayerState
             return;
         }
 
+        bool isMoving = false;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.SetState(new PourState(player));
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+
+        // Only allow left movement if player's x position is greater than the left boundary
+        if (Input.GetKey(KeyCode.LeftArrow) && player.transform.position.x > leftBoundary)
         {
-            player.StartMovingLeft();
             player.MoveLeft();
+            isMoving = true;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+
+        // Only allow right movement if player's x position is less than the right boundary
+        if (Input.GetKey(KeyCode.RightArrow) && player.transform.position.x < rightBoundary)
         {
-            player.StartMovingRight();
             player.MoveRight();
+            isMoving = true;
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             player.SwitchTable(-1);
+            isMoving = true;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             player.SwitchTable(1);
+            isMoving = true;
         }
-        else
+
+        // If no movement keys are pressed, play the Idle animation
+        if (!isMoving && player.spriteAnimator != null)
         {
-            player.StopMoving();
+            player.spriteAnimator.PlayIfNotPlaying("Idle");
         }
     }
 

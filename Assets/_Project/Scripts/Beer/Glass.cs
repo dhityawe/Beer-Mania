@@ -1,24 +1,58 @@
 using UnityEngine;
+using GabrielBigardi.SpriteAnimator;
+using System.Collections;
 
 public class Glass : MonoBehaviour
 {
     public float movementSpeed = 5f;
-    public BeerQuality quality; // Change to BeerQuality enum
+    public float descendSpeed = 2f; // Speed for smooth descent when breaking
+    public BeerQuality quality;
     private int tableIndex;
+
+    private SpriteAnimator spriteAnimator;
+    private bool isBreaking = false;
+
+    private void Start() 
+    {
+        spriteAnimator = GetComponent<SpriteAnimator>();
+        spriteAnimator.PlayIfNotPlaying("Slide");
+    }
 
     private void Update()
     {
-        if (GameManager.IsGameStopped) return;
-        
-        // Move the glass
+        if (GameManager.IsGameStopped || isBreaking) return;
+
+        // Move the glass normally
         transform.Translate(new Vector2(movementSpeed * Time.unscaledDeltaTime, 0));
 
-        // Return to pool if off-screen // !!! Should be when triggerEnter on Customer Spawn Point then return to pool
+        // Check if glass has reached off-screen threshold
         CustomerSpawnPoint currentSpawnPoint = CustomerManager.CustomerSpawnPoints.Find(sp => sp.Lane == tableIndex + 1);
-        if (transform.position.x < currentSpawnPoint.transform.position.x - 0.7f)
+        if (transform.position.x < currentSpawnPoint.transform.position.x - 0.7f && !isBreaking)
         {
+            // Turn off the glass colider
+            GetComponent<BoxCollider2D>().enabled = false;
+            
+            // Start breaking animation and trigger downward transition coroutine
+            spriteAnimator.PlayIfNotPlaying("Break");
+            isBreaking = true;
             EventManager.Broadcast(new OnLiveLost(1));
-            ReturnToPool();
+            StartCoroutine(SmoothlyMoveDownward());
+        }
+    }
+
+    private IEnumerator SmoothlyMoveDownward()
+    {
+        float targetPositionY = transform.position.y - 1.5f;
+
+        while (Mathf.Abs(transform.position.y - targetPositionY) > 0.01f)
+        {
+            // Move downward over time using unscaledDeltaTime
+            transform.position = Vector2.MoveTowards(
+                transform.position,
+                new Vector2(transform.position.x, targetPositionY),
+                descendSpeed * Time.unscaledDeltaTime
+            );
+            yield return null; // Wait for the next frame
         }
     }
 
@@ -26,9 +60,10 @@ public class Glass : MonoBehaviour
     {
         GlassPool pool = FindObjectOfType<GlassPool>();
         pool.ReturnGlass(gameObject);
+        isBreaking = false; // Reset breaking status
     }
 
-    public void SetQuality(BeerQuality quality) // Update to accept BeerQuality
+    public void SetQuality(BeerQuality quality)
     {
         this.quality = quality;
     }
@@ -38,13 +73,13 @@ public class Glass : MonoBehaviour
         tableIndex = index;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision) // !!! Uncomment this when adding Customer script
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Customer customer = collision.GetComponent<Customer>();
         if (customer != null)
         {
             customer.GiveDrink(quality);
-            ReturnToPool(); // Return the glass after checking quality
+            ReturnToPool();
         }
     }
 }

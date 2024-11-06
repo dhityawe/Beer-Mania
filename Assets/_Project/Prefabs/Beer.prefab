@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8907460437822464609}
   - component: {fileID: 2355536514910726964}
   - component: {fileID: 9006314429010636117}
+  - component: {fileID: 6548111935324468231}
   - component: {fileID: -6110528148411282406}
-  - component: {fileID: 4837058839538172278}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Untagged
@@ -100,7 +100,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: -10
+  descendSpeed: 2
   quality: 0
+--- !u!114 &6548111935324468231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549485735589765553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4337bea670e194ca021e2a54e31bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playAutomatically: 0
+  _spriteAnimationObject: {fileID: 11400000, guid: f31334969d620334b9a744c126214fe6, type: 2}
+  _spriteRenderer: {fileID: 2355536514910726964}
 --- !u!61 &-6110528148411282406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,24 +162,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &4837058839538172278
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549485735589765553}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3887a92579bfa94292a8aca0e36a0e2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
