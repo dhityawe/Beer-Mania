@@ -1,9 +1,8 @@
 {
-    "name": "Project",
+    "name": "GBD.SpriteAnimator",
     "rootNamespace": "",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:c8812d2160cadb240ba62bfdfc9956ac"
+        "GUID:478a2357cc57436488a56e564b08d223"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
