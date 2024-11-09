@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77fafcc6bd2ee94ebe9ac341b986e7a, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  SpriteAnimations:
+  - Name: Idle
+    FPS: 4
+    Frames:
+    - {fileID: 429776608, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: 1449259232, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: 914452499, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    SpriteAnimationType: 0
+  - Name: RunLeft
+    FPS: 4
+    Frames:
+    - {fileID: -853701624, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -512046347, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1330466208, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1278782637, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    SpriteAnimationType: 0
+  - Name: RunRight
+    FPS: 4
+    Frames:
+    - {fileID: 1562994994, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -634675104, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1503205281, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1507076426, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    SpriteAnimationType: 0
+  - Name: Pouring
+    FPS: 4
+    Frames:
+    - {fileID: -1575393270, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1845671614, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: 339848490, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: -1412148687, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    - {fileID: 1374772358, guid: 99398d15b37b99a49aeafeaf7caff112, type: 3}
+    SpriteAnimationType: 1
+  - Name: Throw
+    FPS: 1
+    Frames:
+    - {fileID: 21300000, guid: 2841882b2aa7ed84282ba662647f5e81, type: 3}
+    SpriteAnimationType: 1
