@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator LiveLostRoutine()
     {
         yield return new WaitForSeconds(3f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TestRifqi");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
         Time.timeScale = 1f;
         isGameStopped = false;
     }

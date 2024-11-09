@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/TitleScreen.unity
-    guid: d8232655af24b374cb0507db21ab9750
+    path: Assets/_Project/Scenes/WebGL/Leaderboard.unity
+    guid: 8ffced334b836dc4fb4bf3f0fcde196d
   - enabled: 1
-    path: Assets/_Project/Scenes/TestRifqi.unity
-    guid: dd5c39ed38b2aab4e99d60eb4a629002
+    path: Assets/_Project/Scenes/WebGL/TitleScreen.unity
+    guid: e09563e9d24beef4c839de806cdf3f38
+  - enabled: 1
+    path: Assets/_Project/Scenes/WebGL/Gameplay.unity
+    guid: 1f218ae19641ea94d925ec838b91e226
   m_configObjects: {}
