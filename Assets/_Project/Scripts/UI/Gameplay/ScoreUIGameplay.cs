@@ -42,7 +42,7 @@ public class ScoreUIGameplay : MonoBehaviour
 
         int currentScore = int.Parse(scoreText.text);
         int targetScore = currentScore + score;
-        float duration = 0.9f;
+        float duration = 0.85f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
