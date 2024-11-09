@@ -34,21 +34,27 @@ public class ScoreManager : Singleton<ScoreManager>
     private void OnAddScore(AddScore evt)
     {
         Score += evt.Score;
-
-        if (Score > HighScore)
-        {
-            highScore = Score;
-        }
     }
 
     public static void SaveHighScore()
     {
-        PlayerPrefs.SetInt("HighScore", HighScore);
-        PlayerPrefs.Save();
+        if (Score > HighScore)
+        {
+            Instance.highScore = Score;
+            PlayerPrefs.SetInt("HighScore", Score);
+            PlayerPrefs.Save();
+        }
     }
 
     public static void ResetScore()
     {
         Score = 0;
+    }
+
+    public static void ResetHighScore()
+    {
+        Instance.highScore = 0;
+        PlayerPrefs.SetInt("HighScore", 0);
+        PlayerPrefs.Save();
     }
 }

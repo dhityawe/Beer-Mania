@@ -7,7 +7,7 @@ public class ScoreUIGameplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     private Coroutine scoreUpAnimationCoroutine;
-    private int realTargetScore;
+    private int realScore;
 
     private void Start()
     {
@@ -28,20 +28,21 @@ public class ScoreUIGameplay : MonoBehaviour
     {
         if (scoreUpAnimationCoroutine != null)
         {
-            scoreText.text = realTargetScore.ToString();
             StopCoroutine(scoreUpAnimationCoroutine);
+            scoreText.text = realScore.ToString();
         }
+
+        realScore = evt.Score;
         
-        scoreUpAnimationCoroutine = StartCoroutine(ScoreUpAnimation(evt.Score));
+        scoreUpAnimationCoroutine = StartCoroutine(ScoreUpAnimation());
     }
 
-    private IEnumerator ScoreUpAnimation(int score)
+    private IEnumerator ScoreUpAnimation()
     {
         AudioManager.PlaySound("ScoreUp");
-        realTargetScore = ScoreManager.Score + score;
 
         int currentScore = int.Parse(scoreText.text);
-        int targetScore = currentScore + score;
+        int targetScore = realScore;
         float duration = 0.85f;
         float elapsedTime = 0f;
 
@@ -54,7 +55,7 @@ public class ScoreUIGameplay : MonoBehaviour
             yield return null;
         }
 
-        scoreText.text = targetScore.ToString();
+        scoreText.text = realScore.ToString();
         AudioManager.StopSound("ScoreUp");
         scoreUpAnimationCoroutine = null;
     }

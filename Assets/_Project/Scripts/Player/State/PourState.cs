@@ -16,7 +16,7 @@ public class PourState : IPlayerState
         player.StartPouring();
         EventManager.Broadcast(new OnBarrelPouring(player.CurrentTableIndex, true));
         EventManager.Broadcast(new OnKeranPouring(true));
-        Debug.Log("Entered PlayerPourState");
+        // Debug.Log("Entered PlayerPourState");
     }
 
     public void UpdateState()
@@ -80,6 +80,6 @@ public class PourState : IPlayerState
     public void ExitState()
     {
         player.StopPouring();
-        Debug.Log("Exited PlayerPourState");
+        //Debug.Log("Exited PlayerPourState");
     }
 }

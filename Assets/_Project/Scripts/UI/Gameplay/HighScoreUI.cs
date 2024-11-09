@@ -9,6 +9,6 @@ public class HighscoreUI : MonoBehaviour
 
     private void Start()
     {
-        highscoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+        highscoreText.text = ScoreManager.HighScore.ToString();
     }
 }

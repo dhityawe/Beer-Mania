@@ -14,7 +14,7 @@ public class PlayerMoveState : IPlayerState
 
     public void EnterState()
     {
-        Debug.Log("PlayerMoveState: EnterState");
+        // Debug.Log("PlayerMoveState: EnterState");
     }
 
     public void UpdateState()
@@ -31,18 +31,26 @@ public class PlayerMoveState : IPlayerState
             player.SetState(new PourState(player));
         }
 
-        // Only allow left movement if player's x position is greater than the left boundary
-        if (Input.GetKey(KeyCode.LeftArrow) && player.transform.position.x > leftBoundary)
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            player.MoveLeft();
-            isMoving = true;
+            isMoving = false;
         }
 
-        // Only allow right movement if player's x position is less than the right boundary
-        if (Input.GetKey(KeyCode.RightArrow) && player.transform.position.x < rightBoundary)
+        else
         {
-            player.MoveRight();
-            isMoving = true;
+            // Only allow left movement if player's x position is greater than the left boundary
+            if (Input.GetKey(KeyCode.LeftArrow) && player.transform.position.x > leftBoundary)
+            {
+                player.MoveLeft();
+                isMoving = true;
+            }
+
+            // Only allow right movement if player's x position is less than the right boundary
+            if (Input.GetKey(KeyCode.RightArrow) && player.transform.position.x < rightBoundary)
+            {
+                player.MoveRight();
+                isMoving = true;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -66,6 +74,6 @@ public class PlayerMoveState : IPlayerState
 
     public void ExitState()
     {
-        Debug.Log("PlayerMoveState: ExitState");
+        //Debug.Log("PlayerMoveState: ExitState");
     }
 }

@@ -2011,6 +2011,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highscoreText: {fileID: 1821381243}
+--- !u!1 &1829521682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1829521684}
+  - component: {fileID: 1829521683}
+  m_Layer: 0
+  m_Name: CheatCodeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1829521683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829521682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f53bb02a8ed784b99babf26ee80c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheatCode: resetscore
+--- !u!4 &1829521684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829521682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0757222, y: 0.7098794, z: 0.43618014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867636143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,3 +2292,4 @@ SceneRoots:
   - {fileID: 3190600}
   - {fileID: 919019646}
   - {fileID: 662395896}
+  - {fileID: 1829521684}

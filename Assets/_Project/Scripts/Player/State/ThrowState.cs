@@ -15,7 +15,7 @@ public class ThrowState : IPlayerState
         player.spriteAnimator.PlayIfNotPlaying("Throw");
 
         player.fillImage.fillAmount = 0f;
-        Debug.Log("Entered ThrowState");
+        // Debug.Log("Entered ThrowState");
         player.ThrowGlass();
         player.StartCoroutine(WaitForThrowAnimationToFinish()); // Start the coroutine to wait for animation
     }
@@ -24,7 +24,7 @@ public class ThrowState : IPlayerState
 
     public void ExitState()
     {
-        Debug.Log("Exited ThrowState");
+        //Debug.Log("Exited ThrowState");
     }
 
     private IEnumerator WaitForThrowAnimationToFinish()

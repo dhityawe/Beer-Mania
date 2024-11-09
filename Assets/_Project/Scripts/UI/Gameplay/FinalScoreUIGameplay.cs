@@ -6,10 +6,18 @@ using UnityEngine;
 public class FinalScoreUIGameplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    private Coroutine scoreUpAnimationCoroutine;
-    private int realTargetScore;
 
-    private void Update()
+    private void OnEnable()
+    {
+        EventManager.AddListener<OnGameOver>(OnGameOver);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<OnGameOver>(OnGameOver);
+    }
+
+    private void OnGameOver(OnGameOver evt)
     {
         scoreText.text = ScoreManager.Score.ToString();
     }
