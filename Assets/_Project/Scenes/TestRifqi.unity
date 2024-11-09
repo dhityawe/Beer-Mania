@@ -5594,7 +5594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b112c4a7b61704593ab35e206f6a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rushHourTime: 20
+  rushHourTime: 1
   rushHourDuration: 10
 --- !u!1 &1557299675
 GameObject:
