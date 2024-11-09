@@ -15,6 +15,7 @@ namespace UnityEditor.Hyplay
         {
             if (report.summary.platform == BuildTarget.WebGL)
             {
+                return;
                 string indexPath = Path.Combine(report.summary.outputPath, "index.html");
 
                 string htmlContent = File.ReadAllText(indexPath);

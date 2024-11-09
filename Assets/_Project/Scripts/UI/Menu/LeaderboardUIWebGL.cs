@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardUIWebGL : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class LeaderboardUIWebGL : MonoBehaviour
     private void Start()
     {
         ScoreManagerWebGL.InstanceWebGL.GetOnlineHighscore();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScreen");
+        }
     }
 
     private void OnEnable()
