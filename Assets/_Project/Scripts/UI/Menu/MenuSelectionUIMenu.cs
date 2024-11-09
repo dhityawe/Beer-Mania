@@ -23,6 +23,7 @@ public class MenuSelectionUIMenu : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            AudioManager.PlaySound("ChangeMenu");
             buttons[currentButtonIndex].Deselect();
             currentButtonIndex--;
             if (currentButtonIndex < 0)
@@ -33,6 +34,7 @@ public class MenuSelectionUIMenu : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            AudioManager.PlaySound("ChangeMenu");
             buttons[currentButtonIndex].Deselect();
             currentButtonIndex++;
             if (currentButtonIndex >= buttons.Count)
@@ -44,6 +46,7 @@ public class MenuSelectionUIMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            AudioManager.PlaySound("ClickUi");
            isButtonSelected = buttons[currentButtonIndex].Click();
         }
     }

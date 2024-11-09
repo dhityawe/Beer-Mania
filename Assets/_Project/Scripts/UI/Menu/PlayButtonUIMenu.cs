@@ -6,6 +6,7 @@ public class PlayButtonUIMenu : ButtonUIMenu
 {
     public override bool Click()
     {
+        AudioManager.PlaySound("ClickUi");
         StartCoroutine(ClickCoroutine());
         return true;
     }

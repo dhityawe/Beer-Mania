@@ -30,7 +30,7 @@ public class ThrowState : IPlayerState
     private IEnumerator WaitForThrowAnimationToFinish()
     {
         // Wait 0.3 seconds for the animation to finish
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
 
         // After the animation is finished, move to PlayerMoveState
         player.SetState(new PlayerMoveState(player));

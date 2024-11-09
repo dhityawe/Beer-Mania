@@ -4,6 +4,8 @@ public class OnLiveLost : GameEvent
 
     public OnLiveLost(int lives)
     {
+        AudioManager.PlaySound("Lose");
+        AudioManager.StopSound("bgm");
         Lives = lives;
     }
 }

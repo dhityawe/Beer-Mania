@@ -37,11 +37,12 @@ public class ScoreUIGameplay : MonoBehaviour
 
     private IEnumerator ScoreUpAnimation(int score)
     {
+        AudioManager.PlaySound("ScoreUp");
         realTargetScore = ScoreManager.Score + score;
 
         int currentScore = int.Parse(scoreText.text);
         int targetScore = currentScore + score;
-        float duration = 1f;
+        float duration = 0.9f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -54,6 +55,7 @@ public class ScoreUIGameplay : MonoBehaviour
         }
 
         scoreText.text = targetScore.ToString();
+        AudioManager.StopSound("ScoreUp");
         scoreUpAnimationCoroutine = null;
     }
 }
