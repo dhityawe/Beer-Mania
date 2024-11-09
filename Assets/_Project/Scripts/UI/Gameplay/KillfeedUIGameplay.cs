@@ -11,6 +11,7 @@ public class KillfeedUIGameplay : MonoBehaviour
 
     void Update()
     {
+        ClearKillfeed();
         timer += Time.unscaledDeltaTime;
 
         if (timer >= 5)
@@ -52,5 +53,14 @@ public class KillfeedUIGameplay : MonoBehaviour
 
         // Destroy the killfeed after 3 seconds
         Destroy(killfeed, 3f);
+    }
+
+    // clear kill feed after the parent child os >= 4
+    public void ClearKillfeed()
+    {
+        if (transform.childCount >= 4)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+        }
     }
 }
