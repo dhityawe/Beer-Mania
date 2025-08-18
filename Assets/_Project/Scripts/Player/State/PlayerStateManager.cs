@@ -25,6 +25,9 @@ public class PlayerStateManager : MonoBehaviour
     private int currentTableIndex = 0;
     public int CurrentTableIndex { get { return currentTableIndex; } }
 
+    [Header("UI Objects")]
+    public GameObject TutorialPanel;
+
     public SpriteAnimator spriteAnimator;
     public float fillLevel = 0;
 
@@ -35,7 +38,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         spriteAnimator = GetComponent<SpriteAnimator>();
         transform.position = tables[currentTableIndex].position;
-        SetState(new PlayerMoveState(this));
+        SetState(new TutorialState(this)); 
     }
 
     private void Update()

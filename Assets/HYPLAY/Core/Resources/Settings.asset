@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86356c65269e24441b830d0ca9ce5360, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  accessToken: user_at_BJuT7-ychezgKYAYgDQEgaVKm4K86A_jjqHHl9FGMVKHyKF4WnVnh-P49Pyjm__k
+  appName: Beer Mania
+  appDescription: GameJam Plus 2024 Indonesia
+  appUrl: https://itch.io
+  timeoutHours: 24
+  splashHasSignInButton: 1
+  currentApp:
+    id: 144e47a6-4d8d-49aa-bc89-98010f1c890e
+    secretKey: app_sk_2cjlGF9K2GGcJ2karNN6Qpf0iU6ulGWas-Xh-gaB6XPWQcxQ5Jo-q8qtDJI-dnaQ
+    name: Beer Mania
+    description: GameJam Plus 2024 Indonesia
+    redirectUris:
+    - https://itch.io/
+    - https://html-classic.itch.zone/html/
+    - http://localhost
+    url: https://itch.io
+    iconImageAsset:
+      id: 8cec53bc-6f8b-4499-9a37-89cd9766ba5c
+      cdnUrl: https://assets.hyplay.com/53b3858d-3794-4a1f-85e6-b81bd55e7f6a/6bf2ce6ba7f3776f1b89c871f1b6e0a8-1731144009102.png
+    backgroundImageAsset:
+      id: 1d6ab26a-afc3-4e6a-ae36-5456f034baee
+      cdnUrl: https://assets.hyplay.com/53b3858d-3794-4a1f-85e6-b81bd55e7f6a/a3565a304011d0c2ca8dc1ef5b895b7b-1731144012764.png

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     private int score = 0;
-    private int highScore = 0;
+    protected int highScore = 0;
     public static int HighScore {get => Instance.highScore;}
     public static int Score {get => Instance.score; private set { Instance.score = value; EventManager.Broadcast(new OnScoreChanged(Instance.score)); }}
 
@@ -14,7 +14,10 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+    }
 
+    protected virtual void GetHighscore()
+    { 
         if (PlayerPrefs.HasKey("HighScore"))
         {
             highScore = PlayerPrefs.GetInt("HighScore");
@@ -38,6 +41,11 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public static void SaveHighScore()
     {
+        Instance._saveHighScore();
+    }
+
+    protected virtual void _saveHighScore()
+    {
         if (Score > HighScore)
         {
             Instance.highScore = Score;
@@ -46,6 +54,7 @@ public class ScoreManager : Singleton<ScoreManager>
         }
     }
 
+
     public static void ResetScore()
     {
         Score = 0;
@@ -53,7 +62,12 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public static void ResetHighScore()
     {
-        Instance.highScore = 0;
+        Instance._resetHighScore();
+    }
+
+    protected virtual void _resetHighScore()
+    {
+        highScore = 0;
         PlayerPrefs.SetInt("HighScore", 0);
         PlayerPrefs.Save();
     }

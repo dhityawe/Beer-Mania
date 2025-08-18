@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
     private bool isGameStopped = false;
     public static bool IsGameStopped { get { return Instance.isGameStopped; } }
 
+    public bool IsTutorial { get; set; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -54,7 +56,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator LiveLostRoutine()
     {
         yield return new WaitForSeconds(3f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TestRifqi");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
         Time.timeScale = 1f;
         isGameStopped = false;
     }
@@ -71,5 +73,7 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         isGameStopped = false;
         ScoreManager.ResetScore();
+
     }
+
 }

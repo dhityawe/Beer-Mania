@@ -14,6 +14,6 @@ public class RetryButtonUIMenu : ButtonUIMenu
     {
         yield return base.ClickCoroutine();
         EventManager.Broadcast(new OnRestartGame());
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TestRifqi");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
 }
